@@ -14,7 +14,7 @@ const AuthRoute = require('./routes/auth');
 const ImageRoute = require('./routes/images');
 console.log(mongoURI);
 mongoose.connect(mongoURI , {useNewUrlParser : true , useCreateIndex : true , useUnifiedTopology : true}).then(console.log("connected"));
-const {stor} = require('./stroe');
+const {store} = require('./stroe');
 
 const app = express();
 

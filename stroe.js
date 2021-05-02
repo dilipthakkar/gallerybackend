@@ -1,3 +1,8 @@
+const session = require('express-session');
+
+const mongoSessionStore = require('connect-mongodb-session')(session);
+const mongoURI = process.env.MONGOURL ; 
+
 const store = new mongoSessionStore({
     uri : mongoURI,
     collection : "session"
