@@ -51,6 +51,7 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
     console.log("sessionId",req.session);
     console.log("sessionId" , req.sessionID);
+    console.log("sessionId" , req.session.session_name_1);
 
     // for validating data
   const error = validationResult(req).array();
