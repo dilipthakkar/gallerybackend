@@ -18,7 +18,7 @@ var transporter = nodemailer.createTransport({
 
 const sendVerificationMail = (userEmail ,userId ,  emailToken)=>{
     // console.log(userEmail , userId , emailToken);
-    const hreflink = `http://localhost:8000/api/emailverify/${userId}/${emailToken}`;
+    const hreflink = `https://gallerrybackapi.herokuapp.com/api/emailverify/${userId}/${emailToken}`;
     const alink = `<a  href=${hreflink}>Verify</a>`
         const mailoptions = {
             from: 'imatestieetester@gmail.com', 
