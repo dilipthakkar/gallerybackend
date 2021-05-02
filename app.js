@@ -26,11 +26,14 @@ app.set('trust proxy' , 1);
 
 app.use(session({
     secret: 'keyboard cat',
+    name : 'session_name_1',
     resave: false,
     saveUninitialized: false,
     store : store,
     cookie: {
-         secure : false,
+         sameSite : true,
+         httpOnly : true,
+         secure : true,
         maxAge : 20* 30* 200000 },
     
 }))
