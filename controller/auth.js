@@ -3,6 +3,7 @@ const Email = require("../models/emailVerify");
 const sendVerificationMail = require("../controller/email");
 
 const { validationResult } = require("express-validator");
+const { getSessionData } = require("../stroe");
 
 
 exports.signup = async (req, res) => {
@@ -52,7 +53,8 @@ exports.login = async (req, res) => {
     console.log("sessionId",req.session);
     console.log("sessionId" , req.sessionID);
     console.log("sessionId" , req.session.session_name_1);
-
+    const sessiondata = await getSessionData(req.sessionID);
+    console.log(sessiondata);
     // for validating data
   const error = validationResult(req).array();
   if (error.length > 0) {

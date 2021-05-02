@@ -14,14 +14,11 @@ const AuthRoute = require('./routes/auth');
 const ImageRoute = require('./routes/images');
 console.log(mongoURI);
 mongoose.connect(mongoURI , {useNewUrlParser : true , useCreateIndex : true , useUnifiedTopology : true}).then(console.log("connected"));
-
+const {stor} = require('./stroe');
 
 const app = express();
 
-const store = new mongoSessionStore({
-    uri : mongoURI,
-    collection : "session"
-});
+
 
 app.set('trust proxy' , 1);
 app.use(coockieParser());
@@ -44,6 +41,7 @@ app.use(cors({
     credentials : true,
     origin : ["http://localhost:3000" ],
 }));
+
 app.use('/api', AuthRoute);
 app.use('/api', ImageRoute);
 
