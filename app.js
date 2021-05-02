@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const coockieParser = require('cookie-parser');
 const PORT = process.env.PORT || 8000;
 const mongoSessionStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
@@ -23,7 +24,7 @@ const store = new mongoSessionStore({
 });
 
 app.set('trust proxy' , 1);
-
+app.use(coockieParser());
 app.use(session({
     secret: 'keyboard cat',
     name : 'session_name_1',
@@ -31,9 +32,9 @@ app.use(session({
     saveUninitialized: false,
     store : store,
     cookie: {
-         sameSite : 'lax',
+         sameSite : false,
          httpOnly : true,
-         secure : true,
+         secure : false,
         maxAge : 20* 30* 200000 },
     
 }))
