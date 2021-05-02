@@ -22,6 +22,8 @@ const store = new mongoSessionStore({
     collection : "session"
 });
 
+app.set('trust proxy' , 1);
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -29,8 +31,6 @@ app.use(session({
     store : store,
     cookie: {
          secure : false,
-         httpOnly : false,
-         sameSite : "lax",
         maxAge : 20* 30* 200000 },
     
 }))
