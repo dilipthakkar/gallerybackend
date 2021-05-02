@@ -50,7 +50,7 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res) => {
     console.log("sessionId",req.session.user);
-    console.log('getting it');
+
     // for validating data
   const error = validationResult(req).array();
   if (error.length > 0) {
@@ -58,7 +58,6 @@ exports.login = async (req, res) => {
   }
   const user = await User.findOne({ email: req.body.email }).catch(err=>{error : err});
   console.log({email : req.body.email});
-  console.log(user);
   if(!user){
       return res.json({
         auth: false,
@@ -103,6 +102,7 @@ exports.logout = async (req, res) => {
 };
 
 exports.islogin = async (req, res, next) => {
+  console.log(req.session.user);
   if (req.session.user) {
     next();
   } else {
