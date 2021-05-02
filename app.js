@@ -31,7 +31,7 @@ app.use(session({
     saveUninitialized: false,
     store : store,
     cookie: {
-         sameSite : true,
+         sameSite : 'lax',
          httpOnly : true,
          secure : true,
         maxAge : 20* 30* 200000 },
@@ -42,7 +42,6 @@ app.use(bodyParser.json());
 app.use(cors({
     credentials : true,
     origin : ["http://localhost:3000" ],
-    methods : ['GET','POST']
 }));
 app.use('/api', AuthRoute);
 app.use('/api', ImageRoute);
