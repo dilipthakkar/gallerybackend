@@ -79,7 +79,11 @@ exports.login = async (req, res) => {
   if (user.mathcPassword(req.body.password)) {
     user.salt = undefined;
     user.encrypassword = undefined;
+    console.log("getting it");
     req.session.user = user._id;
+        console.log('id h ye',user._id);
+        console.log("session h ye" , req.session.user);
+
     return res.json({
       auth: true,
       user: user,
