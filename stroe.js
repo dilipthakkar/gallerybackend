@@ -8,7 +8,8 @@ const store = new mongoSessionStore({
     collection : "session"
 });
 const getSessionData = (sessionId)=> {
-    store.get(sessionId , (data)=>{
+    store.get(sessionId , (err , data)=>{
+        console.log(err);
         console.log(data);
         return data;
     })
